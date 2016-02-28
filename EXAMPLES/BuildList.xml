@@ -1,0 +1,24 @@
+<!-- 
+
+This XML file is an example of how an integer uniform can be transformed into a List (presented in the user interface as a Popup Button).
+
+-->
+<ShaderNodePreset Description="This Matchbox Shader gives you an example of how to build a Popup button in a Matchbox XML file" Name="Create a List" SupportsAction="True" SupportsTransition="False" SupportsTimeline="True" TimelineUseBack="False" MatteProvider="False" ShaderType="Matchbox" SoftwareVersion="2016.0.0" SupportsAdaptiveDegradation="False" LimitInputsToTexture="True">
+   <Shader Index="1" OutputBitDepth="Output">
+<!-- You can transform an int into a List by setting ValueType to "Popup" in the int uniform. -->
+      <Uniform Name="Colour" Type="int"  ValueType="Popup" DisplayName="Colour" Page="0" Col="0" Row="0" Tooltip="" Default="0" >
+<!-- You can then assign a Title to each of the int values using the following syntax: -->      
+         <PopupEntry Title="Red" Value="0">
+         </PopupEntry>
+         <PopupEntry Title="Green" Value="1">
+         </PopupEntry>
+         <PopupEntry Title="Blue" Value="2">
+         </PopupEntry>
+      </Uniform>
+   </Shader>
+   <Page Page="0" Name="Popup Button">
+      <Col Page="0" Col="0" Name="Popup Button">
+      </Col>
+   </Page>
+</ShaderNodePreset>
+

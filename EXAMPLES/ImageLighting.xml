@@ -1,0 +1,41 @@
+<!--To limit the inputs to the shader sampler input set LimitInputsToTexture= to True
+-->
+<ShaderNodePreset SupportsAdaptiveDegradation="False" SupportsAction="True" SupportsTransition="False" SupportsTimeline="True" MatteProvider="False" TimelineUseBack="False" ShaderType="Matchbox" SoftwareVersion="2016.0.0" LimitInputsToTexture="True" Version="1" Description="" Name="Image Lighting">
+   <Shader OutputBitDepth="Output" Index="1">
+      <!--Set the input to what it really is so front to InputType="Front"
+          Once that's done, you can remove the InputColor= field
+      -->
+      <Uniform Index="0" NoInput="Error" Tooltip="" DisplayName="front" InputType="Front" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_REPEAT" GL_TEXTURE_WRAP_S="GL_REPEAT" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D" Name="front">
+      </Uniform>
+      <Uniform Inc="0.1" Tooltip="" Row="0" Col="0" Page="0" DisplayName="Position" IconType="None" Type="vec2" Name="lightAxis">
+         <SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.5">
+         </SubUniform>
+         <SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.5">
+         </SubUniform>
+      </Uniform>
+      <!--To change a vec3 into a color pot you need to change ValueType= from Position to Colour
+      -->
+      <Uniform Inc="0.01" Tooltip="" Row="0" Col="1" Page="0" DisplayName="Color" IconType="None" ValueType="Colour" Type="vec3" Name="lightColor">
+         <SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="1.0">
+         </SubUniform>
+         <SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="1.0">
+         </SubUniform>
+         <SubUniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="1.0">
+         </SubUniform>
+      </Uniform>
+      <Uniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.5" Inc="0.1" Tooltip="" Row="0" Col="2" Page="0" DisplayName="Amount" Type="float" Name="lightDecay">
+      </Uniform>
+      <Uniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="1.0" Inc="0.1" Tooltip="" Row="0" Col="3" Page="0" DisplayName="Amount" Type="float" Name="lightIntensity">
+      </Uniform>
+   </Shader>
+   <Page Name="Page 1" Page="0">
+      <Col Name="Position" Col="0" Page="0">
+      </Col>
+      <Col Name="Color" Col="1" Page="0">
+      </Col>
+      <Col Name="Intensity" Col="2" Page="0">
+      </Col>
+      <Col Name="Decay" Col="3" Page="0">
+      </Col>
+   </Page>
+</ShaderNodePreset>

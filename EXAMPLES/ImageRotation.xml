@@ -1,0 +1,25 @@
+<!--To limit the inputs to the shader sampler input set LimitInputsToTexture= to True
+-->
+<ShaderNodePreset SupportsAdaptiveDegradation="False" SupportsAction="True" SupportsTransition="False" SupportsTimeline="True" MatteProvider="True" TimelineUseBack="False" ShaderType="Matchbox" SoftwareVersion="2016.0.0" LimitInputsToTexture="True" Version="1" Description="" Name="Image Rotation">
+   <Shader OutputBitDepth="Output" Index="1">
+      <!--SSet the inputs to what they really are, so front to InputType="Front" and matte to InputType="Matte"
+          Once that's done you can remove the InputColor= field
+      -->
+      <Uniform Index="0" NoInput="Error" Tooltip="" DisplayName="Front" InputType="Front"  Mipmaps="False" GL_TEXTURE_WRAP_T="GL_REPEAT" GL_TEXTURE_WRAP_S="GL_REPEAT" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D" Name="front">
+      </Uniform>
+      <!--We set NoInput= to White instead of Error since we do want to allow the use of the tool without having an Matte input.
+      -->
+      <Uniform Index="1" NoInput="Black" Tooltip="" DisplayName="Not Used" InputColor="86, 86, 86" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_CLAMP_TO_EDGE" GL_TEXTURE_WRAP_S="GL_CLAMP_TO_EDGE" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D" Name="unused">
+      </Uniform>
+      <!-- We create an empty socket in between the Front and the Matte socket, so connections are made correctly by default in the Timeline and in Action
+      -->
+      <Uniform Index="2" NoInput="White" Tooltip="" DisplayName="Matte" InputType="Matte"  Mipmaps="False" GL_TEXTURE_WRAP_T="GL_REPEAT" GL_TEXTURE_WRAP_S="GL_REPEAT" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D" Name="matte">
+      </Uniform>
+      <Uniform ResDependent="None" Max="1000000.0" Min="-1000000.0" Default="0.0" Inc="0.1" Tooltip="" Row="0" Col="0" Page="0" DisplayName="Amount" Type="float" Name="rotation">
+      </Uniform>
+   </Shader>
+   <Page Name="Page 1" Page="0">
+      <Col Name="Rotation" Col="0" Page="0">
+      </Col>
+   </Page>
+</ShaderNodePreset>

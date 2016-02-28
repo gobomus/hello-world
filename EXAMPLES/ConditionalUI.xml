@@ -1,0 +1,56 @@
+<!-- 
+
+This XML presents different possible examples of Conditional formatting you can set in a shader's XML.
+
+* UIConditionSource (Optional): The name of the uniform used to conditionally disable/hide the current uniform in the user interface. The condition is based on the uniform name, not the DisplayName.
+
+* UIConditionValue (Optional): The value of the UIConditionSource required for the uniform to be active.
+
+* UIConditionInvert (Optional): Allows you to invert the logic of UIConditionValue. If not set, this will be False.
+   * True
+   * False
+
+* UIConditionType (Optional): Allows you to choose between disabling or hiding the current uniform, based on the UIConditionSource status.
+   * Disable
+   * Hide
+
+-->
+<ShaderNodePreset SupportsAdaptiveDegradation="False" SupportsAction="True" SupportsTransition="False" SupportsTimeline="True" MatteProvider="False" TimelineUseBack="False" ShaderType="Matchbox" SoftwareVersion="2016.0.0" LimitInputsToTexture="True" Version="1" Description="" Name="Conditional UI">
+   <Shader OutputBitDepth="Output" Index="1">
+      <Uniform Row="0" Col="0" Page="0" Default="False" Tooltip="" DisplayName="Animated" Type="bool" Name="animated">
+      </Uniform>
+<!-- The UICondition tokens defined in the following uniform make the "Blending" numeric field look disabled when the "Animated" toggle button is disabled in the user interface -->
+      <Uniform ResDependent="None" Max="1.0" Min="-1.0" Default="0.0" Inc="0.01" Tooltip="" Row="1" Col="0" Page="0" DisplayName="Blending" Type="float" Name="blending" UIConditionSource="animated" UIConditionValue="True" UIConditionType="Disable">
+      </Uniform>
+<!-- The UICondition tokens set in the following uniform make the Speed numeric field disappear when the animated uniform is disabled in the user interface.
+     The only difference with the Blending numeric field is the UIConditionType value being set to "Hide" instead of "Disable" -->
+      <Uniform ResDependent="None" Max="1.00" Min="0.00" Default="1.00" Inc="0.001" Tooltip="" Row="2" Col="0" Page="0" DisplayName="Speed" Type="float" Name="speed" UIConditionSource="animated" UIConditionValue="True" UIConditionType="Hide">
+      </Uniform>      
+      <Uniform Default="0" Tooltip="" Row="0" Col="1" Page="0" DisplayName="Colour" Type="int" Name="colour" ValueType="Popup">
+         <PopupEntry Title="Coloured" Value="0">
+         </PopupEntry>
+         <PopupEntry Title="Black/White" Value="1">
+         </PopupEntry>
+         <PopupEntry Title="Red" Value="2">
+         </PopupEntry>      
+         <PopupEntry Title="Green" Value="3">
+         </PopupEntry> 
+         <PopupEntry Title="Blue" Value="4">
+         </PopupEntry>          
+      </Uniform>
+<!-- In the following example, we're using UIConditionInvert to invert the value of UIConditionValue. UIConditionSource="colour" has 0, 1, 2, 3 and 4 as possible values.
+     Setting the UIConditionValue to "1" and then setting UIConditionInvert to "True" results in the condition being applied to 0, 2, 3, and 4. This is needed since you cannot enter multiple values in UIConditionValue. -->
+      <Uniform ResDependent="None" Max="10.0" Min="0.0" Default="1.0" Inc="0.5" Tooltip="" Row="1" Col="1" Page="0" DisplayName="Red Gain" Type="float" Name="red_gain" UIConditionSource="colour" UIConditionValue="1" UIConditionInvert="True" UIConditionType="Disable">
+      </Uniform>
+      <Uniform ResDependent="None" Max="10.0" Min="0.0" Default="1.0" Inc="0.5" Tooltip="" Row="2" Col="1" Page="0" DisplayName="Green Gain" Type="float" Name="green_gain" UIConditionSource="colour" UIConditionValue="1" UIConditionInvert="True" UIConditionType="Disable">
+      </Uniform>      
+      <Uniform ResDependent="None" Max="10.0" Min="0.0" Default="1.0" Inc="0.5" Tooltip="" Row="3" Col="1" Page="0" DisplayName="Blue Gain" Type="float" Name="blue_gain" UIConditionSource="colour" UIConditionValue="1" UIConditionInvert="True" UIConditionType="Disable">
+      </Uniform>
+   </Shader>
+   <Page Name="Page 1" Page="0">
+      <Col Name="Based on Bool" Col="0" Page="0">
+      </Col>
+      <Col Name="Based on Popup" Col="1" Page="0">
+      </Col>
+   </Page>
+</ShaderNodePreset>

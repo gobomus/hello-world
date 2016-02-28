@@ -1,0 +1,59 @@
+<ShaderNodePreset SupportsAdaptiveDegradation="False" SupportsAction="False" SupportsTransition="False" SupportsTimeline="False" MatteProvider="False" TimelineUseBack="True" ShaderType="Matchbox" SoftwareVersion="2016.0.0" Description="This is an example of a Blending operation made using Matchbox. This example shows how to make a Add operation between two clips" Name="Blending" LimitInputsToTexture="True">
+  <Shader OutputBitDepth="Output" Index="1">
+    <Uniform Index="0" NoInput="Error" Mipmaps="False"
+	     GL_TEXTURE_WRAP_T="GL_REPEAT"
+	     GL_TEXTURE_WRAP_S="GL_REPEAT"
+	     GL_TEXTURE_MAG_FILTER="GL_LINEAR"
+	     GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D"
+	     Tooltip="" DisplayName="Front" Name="input1"
+	     InputType="Front">
+    </Uniform>
+    <Uniform Index="1" NoInput="Error" Mipmaps="False"
+	     GL_TEXTURE_WRAP_T="GL_REPEAT"
+	     GL_TEXTURE_WRAP_S="GL_REPEAT"
+	     GL_TEXTURE_MAG_FILTER="GL_LINEAR"
+	     GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D"
+	     Tooltip="" DisplayName="Back" Name="input2"
+	     InputType="Back">
+    </Uniform>
+    <Uniform Default="0" ValueType="Popup"
+	     Tooltip="Blend Modes"
+	     Row="0" Col="0" Page="0" Type="int"
+	     DisplayName="Blend Modes" Name="blendMode">
+      <PopupEntry Title="No Blending" Value="-1">
+      </PopupEntry>
+      <PopupEntry Title="Min/Lighten" Value="30">
+      </PopupEntry>
+      <PopupEntry Title="Mutliply" Value="2">
+      </PopupEntry>
+      <PopupEntry Title="Max/Darken" Value="29">
+      </PopupEntry>
+      <PopupEntry Title="Screen" Value="17">
+      </PopupEntry>
+      <PopupEntry Title="Add" Value="0">
+      </PopupEntry>
+      <PopupEntry Title="Subtract" Value="1">
+      </PopupEntry>
+      <PopupEntry Title="Overlay" Value="18">
+      </PopupEntry>
+      <PopupEntry Title="Soft Light" Value="13">
+      </PopupEntry>
+      <PopupEntry Title="Hard Light" Value="14">
+      </PopupEntry>
+      <PopupEntry Title="Spotlight" Value="11">
+      </PopupEntry>
+      <PopupEntry Title="Difference" Value="19">
+      </PopupEntry>
+      <PopupEntry Title="Exclusion" Value="20">
+      </PopupEntry>
+      <PopupEntry Title="Linear Burn" Value="10">
+      </PopupEntry>
+      <PopupEntry Title="Lighter Color" Value="33">
+      </PopupEntry>
+      <PopupEntry Title="Linear Light" Value="32">
+      </PopupEntry>
+      <PopupEntry Title="Pin Light" Value="15">
+      </PopupEntry>
+    </Uniform>
+  </Shader>
+</ShaderNodePreset>

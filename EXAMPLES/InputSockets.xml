@@ -1,0 +1,45 @@
+<!--
+
+This XML file is an example of how the Input Sockets of a Matchbox node can be coloured for each individual Texture (sampler2D).
+
+InputType (Optional) : Specifies the Colour of an Input socket on the Matchbox node.
+   * Front (Red)
+   * Back  (Green)
+   * Matte (Blue)
+
+* InputColor (Optional) : Allows you to specifiy a custom RGB colour using 0-255 values in the "r,g,b" format.
+                          If InputType is also specified, it takes precedence over InputColor.
+                          
+-->
+<ShaderNodePreset Description="This Matchbox shader is an example of how the Input Sockets of the Matchbox node can be coloured." SupportsAction="True" SupportsTransition="False" SupportsTimeline="True" TimelineUseBack="False" MatteProvider="False" ShaderType="Matchbox" SoftwareVersion="2016.0.0" Name="Input Sockets" SupportsAdaptiveDegradation="False">
+   <Shader Index="1" OutputBitDepth="Output">
+      <Uniform Name="doBlend" Type="bool" DisplayName="Blend" Tooltip="" Default="False" Page="0" Col="0" Row="1">
+      </Uniform>
+      <Uniform Name="inputIndex" Type="float" DisplayName="Index" Page="0" Col="0" Row="0" Tooltip="" Inc="1.00" Default="1.0" Min="1.0" Max="6.0" ResDependent="None">
+      </Uniform>
+<!-- Setting InputType to "Front" will result in this Texture's Input Socket being Red -->
+      <Uniform Index="0" Name="t0" DisplayName="Input 1" Tooltip="" Type="sampler2D" NoInput="Black" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_REPEAT" GL_TEXTURE_WRAP_S="GL_REPEAT" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" InputType="Front">
+      </Uniform>
+<!-- Setting InputType to "Back" will result in this Texture's Input Socket being Green -->
+      <Uniform Index="1" Name="t1" DisplayName="Input 2" Tooltip="" Type="sampler2D" NoInput="Black" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_REPEAT" GL_TEXTURE_WRAP_S="GL_REPEAT" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" InputType="Back">
+      </Uniform>
+<!-- Setting InputType to "Matte" will result in this Texture's Input Socket being Blue -->
+      <Uniform Index="2" Name="t2" DisplayName="Input 3" Tooltip="" Type="sampler2D" NoInput="Black" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_REPEAT" GL_TEXTURE_WRAP_S="GL_REPEAT" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" InputType="Matte">
+      </Uniform>
+<!-- Any Texture where InputType is not defined will have its corresponding Input Socket displayed as Light Grey -->
+      <Uniform Index="3" Name="t3" DisplayName="Input 4" Tooltip="" Type="sampler2D" NoInput="Black" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_REPEAT" GL_TEXTURE_WRAP_S="GL_REPEAT" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR">
+      </Uniform>
+<!-- It is possible to define a custom colour for an Input Socket. This is done using the InputColor token. A colour must be defined as "R,G,B" where R, G and B are values between 0 and 255 (8-bit).
+     In the following example, the Input Socket is defined as Black -->
+      <Uniform Index="4" Name="t4" DisplayName="Input 5" Tooltip="" Type="sampler2D" NoInput="Black" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_REPEAT" GL_TEXTURE_WRAP_S="GL_REPEAT" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" InputColor="0,0,0">
+<!-- InputType always has precedence over InputColor. In the following uniform, the Input Socket is set to appear as White, but the presence of InputType overwrites InputColor.-->
+      </Uniform>
+      <Uniform Index="5" Name="t5" DisplayName="Input 6" Tooltip="" Type="sampler2D" NoInput="Black" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_REPEAT" GL_TEXTURE_WRAP_S="GL_REPEAT" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" InputColor="255,255,255" InputType="Front">
+      </Uniform>
+   </Shader>
+   <Page Page="0" Name="Inputs">
+      <Col Page="0" Col="0" Name="Inputs">
+      </Col>
+   </Page>
+</ShaderNodePreset>
+
